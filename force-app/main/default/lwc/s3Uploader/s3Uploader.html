@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="S3 File Uploader" icon-name="utility:upload">
+        <div class="slds-m-around_medium">
+            <lightning-input type="file" label="Select File" onchange={handleFileChange}>
+            </lightning-input>
+        </div>
+        <div if:true={isLoading} class="slds-m-vertical_medium">
+            <lightning-spinner alternative-text="uploading..." size="medium"></lightning-spinner>
+            <div class="slds-text-align_center slds-m-top_small">
+                Uploading {fileName}...
+            </div>
+        </div>
+    </lightning-card>
+</template>

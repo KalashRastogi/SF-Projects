@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Default S3 Config</label>
+    <protected>false</protected>
+    <values>
+        <field>AWS_Access_Key__c</field>
+        <value xsi:type="xsd:string">AKIAR7D4VYN2Y6S36PHR</value>
+    </values>
+    <values>
+        <field>AWS_Region__c</field>
+        <value xsi:type="xsd:string">us-east-1</value>
+    </values>
+    <values>
+        <field>AWS_Secret_Key__c</field>
+        <value xsi:type="xsd:string">GifO+U6g8ju93XpHxI412Zkl2WjYUztd70GTMZMt</value>
+    </values>
+    <values>
+        <field>IAM_Role_ARN__c</field>
+        <value xsi:type="xsd:string">arn:aws:iam::135552942965:role/SalesforceS3UploadRole</value>
+    </values>
+    <values>
+        <field>S3_Bucket_Name__c</field>
+        <value xsi:type="xsd:string">kalash-sfdc-upload-demo-2025</value>
+    </values>
+</CustomMetadata>
