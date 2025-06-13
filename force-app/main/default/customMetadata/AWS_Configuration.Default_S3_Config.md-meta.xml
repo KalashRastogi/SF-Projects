@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>AWS_Access_Key__c</field>
-        <value xsi:type="xsd:string">AKIAR7D4VYN2Y6S36PHR</value>
+        <value xsi:type="xsd:string">PLACE ACCESS KEY HERE</value>
     </values>
     <values>
         <field>AWS_Region__c</field>
@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>AWS_Secret_Key__c</field>
-        <value xsi:type="xsd:string">GifO+U6g8ju93XpHxI412Zkl2WjYUztd70GTMZMt</value>
+        <value xsi:type="xsd:string">PLACE SECRET KEY HERE</value>
     </values>
     <values>
         <field>IAM_Role_ARN__c</field>
