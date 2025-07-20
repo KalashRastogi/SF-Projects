@@ -1,12 +1,13 @@
+// S3Service.cls - Corrected Version
 public class S3Service {
-	private String accessKey;
+    private String accessKey;
     private String secretKey;
     private String bucketName;
     private String region;
     private String service = 's3';
     
     public S3Service(){
-        AWS_Configuration__mdt  config = [
+        /*AWS_Configuration__mdt  config = [
             SELECT AWS_Access_Key__c, AWS_Region__c, AWS_Secret_Key__c, S3_Bucket_Name__c, IAM_Role_ARN__c
             FROM AWS_Configuration__mdt WHERE DeveloperName = 'Default_S3_Config'
             LIMIT 1
@@ -15,7 +16,12 @@ public class S3Service {
         this.accessKey = config.AWS_Access_Key__c;
         this.secretKey = config.AWS_Secret_Key__c;
         this.bucketName = config.S3_Bucket_Name__c;
-        this.region = config.AWS_Region__c;
+        this.region = config.AWS_Region__c;*/
+        AWSConfig configInstance = AWSConfig.getAwsConfigInstance('Default_S3_Config'); //followed singleton pattern
+        this.accessKey = configInstance.getAccessKey();
+        this.secretKey = configInstance.getRegion();
+        this.bucketName = configInstance.getSecretKey();
+        this.region = configInstance.getBucketName();
     }
     
     public String generatePreSignedUrl(String fileName){
@@ -46,13 +52,13 @@ public class S3Service {
             iso8601Time + '\n' +
             iso8601Date + '/' + this.region + '/' + this.service + '/aws4_request\n' +
             EncodingUtil.convertToHex(Crypto.generateDigest('SHA-256', Blob.valueOf(canonicalRequest)));
-
+        
         // *** Step 3: Calculate the Signature ***
         // This is the core cryptographic part. It uses the secret key to create the signature.
         Blob signingKey = getSigningKey(this.secretKey, iso8601Date, this.region, this.service);
         Blob signature = Crypto.generateMac('hmacSHA256', Blob.valueOf(stringToSign), signingKey);
         String signatureHex = EncodingUtil.convertToHex(signature);
-
+        
         // *** Step 4: Assemble the final URL ***
         String endpoint = 'https://' + host + canonicalURI;
         String presignedUrl = endpoint + '?' + canonicalQueryString + '&X-Amz-Signature=' + signatureHex;
